@@ -12,8 +12,7 @@ sleep 3
 # need change
 export OPENSSL_VERSION="openssl-1.1.1l"
 curl -O "https://www.openssl.org/source/${OPENSSL_VERSION}.tar.gz"
-rm -rf ${OPENSSL_VERSION}
-tar xfz "${OPENSSL_VERSION}.tar.gz"
+
 
 PROJECT_HOME=`pwd`
 PATH_ORG=$PATH
@@ -43,7 +42,8 @@ build_android_clang() {
 	# Build openssl libraries
 	#perl -pi -w -e 's/\-mandroid//g;' ./Configure
 	PATH=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
-	#export CFLAGS="-Werror -O3"
+	#turn off warning  macro-redefined
+	# export CFLAGS="-Wno-macro-redefined -O3"
 	./Configure  $CONFIGURE_PLATFORM -D__ANDROID_API__=$ANDROID_API shared threads no-asm no-sse2 no-ssl2 no-ssl3 no-comp no-hw no-engine
     
     	make build_libs -j8
