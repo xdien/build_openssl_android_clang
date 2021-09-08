@@ -12,4 +12,7 @@ $ chmod +x build_openssl.sh
 $ ./build_openssl.sh
 ```
 - You will find the library at ./libs/android/clang directory after successfully running the script 
-
+# Screenshots
+ ![Openssl library folder built successfully](/screenshots/sc_1.png)
+ 
+ ![openssl dynamic library](/screenshots/sc_2.png)
